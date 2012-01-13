@@ -4,6 +4,7 @@ FLAG = `pkg-config --libs opencv --cflags opencv`
 #objects = main.o
 objects += utils.o
 objects += dct.o
+objects += ellipse.o
 
 a.out : $(objects) main.o
 	$(CC) $(FLAG) -o a.out $(objects) main.o
@@ -16,6 +17,8 @@ match.o : match.cpp
 utils.o : utils.cpp
 	$(CC) $(FLAG) -c $<
 dct.o : dct.cpp
+	$(CC) $(FLAG) -c $<
+ellipse.o : ellipse.cpp
 	$(CC) $(FLAG) -c $<
 
 clean:
