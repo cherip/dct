@@ -5,6 +5,7 @@
 #include <iostream>
 #include <stdio.h>
 #include <algorithm>
+#include <dirent.h>
 
 void print_32f_image( const IplImage *src ) {
     for ( int y = 0; y < src->height; y++ ) {
@@ -122,10 +123,18 @@ int compare_image_by_dct( const IplImage *src, const IplImage *dst ) {
 
     float dist = 0.0f;
     for ( int i = 0; i < featLenSrc; i++ ) {
+//      std::cout << ABS( featSrc[ i ] - featDst[ i ] ) << " ";
         dist += ABS( featSrc[ i ] - featDst[ i ] ); 
     }
 
     std::cout << dist << std::endl;
 
+    delete [] featSrc;
+    delete [] featDst;
     return 1;
 }
+
+//int compare_dir_by_dct() {
+//  const char path[] = ""
+//  struct dirent **namelist;
+//}
